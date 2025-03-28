@@ -2,17 +2,18 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "View Users", href: "/" },
-  { name: "Github", href: "/" },
-  { name: "Portfolio", href: "/" },
+  {
+    name: "Github",
+    href: "https://github.com/OmJadav/FrontEnd-Task",
+    target: "_blank",
+  },
+  { name: "Portfolio", href: "https://omjadav.netlify.app", target: "_blank" },
 ];
 
 function classNames(...classes) {
@@ -20,6 +21,13 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -46,9 +54,10 @@ export default function Navbar() {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href}
+                    target={item.target ? item.target : ""}
                     aria-current={item.current ? "page" : undefined}
                     className={classNames(
                       item.current
@@ -58,8 +67,20 @@ export default function Navbar() {
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
+                {token && (
+                  <>
+                    <button
+                      onClick={logout}
+                      className={classNames(
+                        "rounded-md px-3 py-2 text-sm font-medium bg-red-500 text-white"
+                      )}
+                    >
+                      Logout
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -72,7 +93,8 @@ export default function Navbar() {
             <DisclosureButton
               key={item.name}
               as="a"
-              href={item.href}
+              to={item.href}
+              target={item.target ? item.target : ""}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.current

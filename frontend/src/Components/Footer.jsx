@@ -30,7 +30,7 @@ export const Footer = () => {
             />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/omjadav"
             target="_blank"
             rel="noopener noreferrer"
           >
