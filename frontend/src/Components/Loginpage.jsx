@@ -12,6 +12,7 @@ export const Loginpage = () => {
     register,
     formState: { errors },
     reset,
+    setValue,
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
@@ -23,6 +24,11 @@ export const Loginpage = () => {
         navigate("/");
       }
     } catch (error) {}
+  };
+
+  const testUserClick = () => {
+    setValue("email", "eve.holt@reqres.in");
+    setValue("password", "cityslicka");
   };
   return (
     <div className="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 py-5">
@@ -94,7 +100,7 @@ export const Loginpage = () => {
 
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-7">
-                  <button className="block w-full  mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                  <button className="block w-full cursor-pointer mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
                     LOGIN
                   </button>
                 </div>
@@ -102,9 +108,18 @@ export const Loginpage = () => {
             </form>
             <div className="text-center">
               <h1 className="font-semibold">
-                Don't Have an account?{" "}
-                <span className="underline cursor-pointer">Register</span>
+                👇 Use below Test User button to fill credentials 👇{" "}
               </h1>
+            </div>
+            <div className="flex -mx-3">
+              <div className="w-full px-3 mb-7 mt-3 ">
+                <button
+                  onClick={testUserClick}
+                  className="block cursor-pointer mx-auto bg-red-500 hover:bg-red-700 focus:bg-red-700 text-white rounded-lg px-3 py-2 font-semibold"
+                >
+                  TEST USER
+                </button>
+              </div>
             </div>
           </div>
           <SideImage />

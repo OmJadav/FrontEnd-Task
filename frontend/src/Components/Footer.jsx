@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <>
       {/* <footer className="flex flex-col space-y-3 justify-center text-xl mt-15 p-5 bg-gray-400 "> */}
-      <footer className=" bottom-0 left-0 w-full p-5 bg-gray-400 text-xl flex flex-col space-y-3 items-center lg:absolute">
+      <footer className="  left-0 w-full p-5 bg-gray-400 text-xl flex flex-col items-center lg:absolute lg:bottom-0">
         <div className="flex justify-center space-x-7">
           <a
             href="https://www.linkedin.com/in/omjadav"
