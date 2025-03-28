@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { SideImage } from "./SideImage";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { InputField } from "./InputField";
 import { mdiAt, mdiLockOutline } from "@mdi/js";
 import { postApi } from "../utils/ApiHandler";
@@ -14,13 +14,16 @@ export const Loginpage = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
   const onSubmit = async (data) => {
+    setloading(true);
     try {
       const response = await postApi(`api/login`, data);
       if (response) {
         localStorage.setItem("token", response.token);
-        navigate("/dashboard");
+        navigate("/");
       }
+      setloading(false);
     } catch (error) {}
   };
 
@@ -39,13 +42,6 @@ export const Loginpage = () => {
             <div className="text-center mb-10">
               <h1 className="font-bold text-3xl text-gray-900">LOGIN</h1>
             </div>
-            {/* <form
-              noValidate
-              onSubmit={handleSubmit((data) => {
-                reset();
-                console.log(data);
-              })}
-            > */}
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-5">
@@ -98,8 +94,15 @@ export const Loginpage = () => {
 
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-7">
-                  <button className="block w-full cursor-pointer mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
-                    LOGIN
+                  <button
+                    disabled={loading}
+                    className={`block w-full ${
+                      loading
+                        ? `bg-indigo-300  focus:bg-indigo-700 text-white cursor-no-drop`
+                        : "bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white cursor-pointer"
+                    }   mx-auto  rounded-lg px-3 py-3 font-semibold`}
+                  >
+                    {loading ? "Loading..." : "Login"}
                   </button>
                 </div>
               </div>

@@ -11,9 +11,8 @@ function App() {
       {" "}
       <Toaster />
       <Routes>
-        <Route path="/" element={<Loginpage />} />
         <Route
-          path="/dashboard"
+          path="/"
           element={
             <>
               <Navbar />
@@ -21,6 +20,7 @@ function App() {
             </>
           }
         />
+        <Route path="/login" element={<Loginpage />} />
       </Routes>
       <Footer />
     </>
