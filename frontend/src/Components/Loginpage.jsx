@@ -2,9 +2,7 @@ import React from "react";
 import { SideImage } from "./SideImage";
 import { useForm } from "react-hook-form";
 import { InputField } from "./InputField";
-import axios from "axios";
 import { mdiAt, mdiLockOutline } from "@mdi/js";
-import apiUrl from "../utils/urlHelper";
 import { postApi } from "../utils/ApiHandler";
 import { useNavigate } from "react-router-dom";
 export const Loginpage = () => {
@@ -21,7 +19,7 @@ export const Loginpage = () => {
       const response = await postApi(`api/login`, data);
       if (response) {
         localStorage.setItem("token", response.token);
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (error) {}
   };

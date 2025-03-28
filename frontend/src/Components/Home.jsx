@@ -39,7 +39,7 @@ export const Home = () => {
       const token = localStorage.getItem("token");
       if (!token) {
         toast.error("Unauthorized! No token found!");
-        navigate("/login");
+        navigate("/");
         return;
       }
       const response = await getApi(`api/users?page=${page}`);

@@ -26,7 +26,7 @@ export default function Navbar() {
 
   const logout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
   return (
     <Disclosure as="nav" className="bg-gray-800">

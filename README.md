@@ -1,6 +1,6 @@
 # 🔒 React User Authentication App 🔒
 
-Live Link :
+## 🔗Live Link : https://authentication-eight-woad.vercel.app/
 
 A simple yet powerful user management app built with **React (Vite)**. This application provides authentication, user listing with pagination, editing, and deletion functionalities.
 
@@ -14,6 +14,15 @@ A simple yet powerful user management app built with **React (Vite)**. This appl
 - ❌ Delete users with confirmation
 - 📦 Token-based authentication using **TOKEN**
 - 🎨 Styled with **Tailwind CSS** and animations with **Framer Motion**
+
+---
+
+## 🛠️ Technologies/Libraries Used
+
+- **Frontend:** React (Vite), Tailwind CSS, Framer Motion
+- **HTTP Requests:** Axios
+- **Navigation:** react-router-dom
+- **Form handling:** react-hook-form
 
 ---
 
@@ -78,14 +87,5 @@ Now, open your browser and visit `http://localhost:5173` 🎉
 - The App uses **Token authentication**, so ensure you have a valid token stored in `localStorage`.
 - Error handling and edge cases have been considered to enhance security and reliability.
 - Every pages made with user friendly design and responsiveness as well
-
----
-
-## 🛠️ Technologies/Libraries Used
-
-- **Frontend:** React (Vite), Tailwind CSS, Framer Motion
-- **HTTP Requests:** Axios
-- **Navigation:** react-router-dom
-- **Form handling:** react-hook-form
 
 ---
